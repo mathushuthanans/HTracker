@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 
-@RestController
+@Controller
 public class HomeController {
     private final StoreHibernate sh;
     
@@ -29,7 +29,7 @@ public class HomeController {
 
 
     @RequestMapping("/")
-    public String todayPage(@RequestParam(required = false) List<String> selectedHabits, Model m){
+    public String todayPage(@RequestParam(required = false, defaultValue = "") List<String> selectedHabits, Model m){
         /*
          * The selectedHabits are Optional (as a first Page)
          * But Model is to hold the consistency to next Pages. 
@@ -75,12 +75,10 @@ public class HomeController {
     }
     
 
-    @PostMapping("/add")
-    public Habit storePage(@RequestBody Habit habit){
+    @RequestMapping("/add")
+    public String storePage(Habit habit){
         if (habit.getName() == null || habit.getName().isEmpty()) {
-            System.out.println();
-            System.out.println("YESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
-            System.out.println();
+            return "add";
         }
 
         habit.setLastDate(LocalDate.now().minusDays(1));
@@ -101,15 +99,15 @@ public class HomeController {
             sh.save(habit);
             System.out.println("Saved in the database: " + habit);
         }
-        return habit;
+        return "add";
         
     }
 
     @RequestMapping("/display")
-    public List<Habit> displayPage(Model model){
+    public String displayPage(Model model){
         List <Habit> habits = sh.retrieve();
         model.addAttribute("habits", habits);
-        return habits;
+        return "display";
                 
     }
 
