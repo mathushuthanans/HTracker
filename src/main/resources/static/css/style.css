@@ -1,155 +1,179 @@
-/* ===== General Styling ===== */
+/* Combined CSS for Today's Task, Add Habit, and Habit Tracker Pages */
+
+/* Global Styles (Applied to all pages) */
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: Arial, sans-serif;
     text-align: center;
-    padding: 50px;
-    min-height: 100vh;
-    background: linear-gradient(to bottom, #292623, #474747, #1E1B18);
+    background: url("images/cyber.jpg") no-repeat center center fixed;
+    background-size: cover;
     color: #fff;
+    margin: 0;
+    padding: 0;
+    animation: fadeIn 1s ease-in-out; /* Fade-in animation */
 }
 
-/* ===== Header ===== */
-h1, h2 {
-    font-size: 36px;
+/* Heading Styling (Applied to all pages) */
+h2 {
+    margin-top: 50px;
+    font-size: 28px;
     font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 20px;
+    background: linear-gradient(90deg, #00ffff, #00ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 0px 10px rgba(0, 255, 255, 0.8), 
+                 0px 0px 20px rgba(0, 0, 255, 0.8);
 }
 
-/* ===== Navbar ===== */
-.navbar {
-    background: #222;
-    padding: 15px;
-    text-align: center;
-    border-radius: 10px;
-    margin-bottom: 20px;
+/* Today's Task Styles */
+.habit-list {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 12px;
+    padding: 20px;
+    width: 360px;
+    margin: 0 auto;
 }
-.navbar a {
+
+.habit-card {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    transition: background 0.3s ease-in-out;
+}
+
+.habit-card:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.habit-card input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.habit-card label {
+    font-size: 18px;
+    font-weight: bold;
     color: white;
-    text-decoration: none;
-    margin: 0 20px;
-    font-size: 20px;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-.navbar a:hover {
-    color: #ffea00;
+    cursor: pointer;
 }
 
-/* ===== Form Styling (Add Habit) ===== */
+/* Add Habit Page Styles */
 form {
-    background-color: #333;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+    border-radius: 12px;
     padding: 30px;
-    border-radius: 10px;
-    display: inline-block;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
     max-width: 450px;
-    width: 100%;
-    box-sizing: border-box;
-    margin-top: 20px;
+    width: 90%; /* Adjust for responsiveness */
+    margin: 20px auto; /* Center the form */
 }
 
 input[type="text"], input[type="date"] {
-    border: 2px solid #555;
-    border-radius: 8px;
-    padding: 12px;
-    margin: 12px 0;
-    width: calc(100% - 30px);
-    font-size: 16px;
-    background-color: #444;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 10px 0;
+    width: calc(100% - 22px); /* Adjust for padding and border */
+    background-color: rgba(255, 255, 255, 0.1); /* Light semi-transparent background */
     color: white;
 }
 
 label {
     font-size: 18px;
-    color: #ffea00;
     font-weight: bold;
+    color: white;
+    display: block; /* Make labels appear on their own line */
+    margin-bottom: 5px;
 }
 
-/* ===== Submit Button ===== */
+/* Common Button Style (Applied to all pages) */
 input[type="submit"], button {
-    background-color: #eeff00;
+    background: #00ffff;
     color: black;
-    font-weight: bold;
+    border: none;
+    padding: 12px 18px;
+    font-size: 16px;
     cursor: pointer;
-    border-radius: 8px;
-    padding: 12px;
-    width: 100%;
-    font-size: 18px;
-    transition: background-color 0.3s;
-}
-input[type="submit"]:hover, button:hover {
-    background-color: #887c00;
-}
-
-/* ===== Habit Display Cards ===== */
-.habit-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-}
-
-.habit-box {
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
-    font-size: 18px;
+    border-radius: 6px;
     font-weight: bold;
+    margin-top: 15px;
+    transition: 0.3s ease;
+    width: 100%; /* Make the button full-width */
+}
+
+input[type="submit"]:hover, button:hover {
+    background: #ffffff;
+    color: black;
+}
+
+/* Responsive Design (Applied to all pages) */
+@media (max-width: 768px) {
+    .habit-list, form {
+        width: 95%; /* Adjust width for smaller screens */
+    }
+}
+
+/* Habit Tracker Page Styles */
+.habit-tracker-container {
     text-align: center;
-    transition: transform 0.3s ease;
-    max-width: 280px;
-    min-width: 220px;
-    flex: 1 1 250px;
-}
-.habit-box:hover {
-    transform: scale(1.05);
-}
-
-/* ===== Today's Habit Checklist ===== */
-.habit-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+    margin: 30px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 255, 255, 0.3);
 }
 
-.habit-card {
-    background: rgba(50, 50, 50, 0.8);
-    padding: 15px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 300px;
-    font-size: 18px;
-}
-.habit-card input[type="checkbox"] {
-    transform: scale(1.3);
-    accent-color: #ffea00;
+.habit-tracker-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #00ffff;
+    text-shadow: 0px 0px 10px rgba(0, 255, 255, 0.8);
+    margin-bottom: 20px;
 }
 
 .habit-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-.habit-box {
-    border: 1px solid #ccc;
-    padding: 10px;
-    width: 200px;
-    text-align: center;
-    background-color: #f9f9f9;
-}
-.habit-list {
-    display: flex;
     flex-direction: column;
+    align-items: center;
 }
-.habit-card {
-    padding: 5px;
-    margin: 5px;
-    border: 1px solid #ddd;
+
+/* Table for structured habit tracking */
+.habit-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.habit-table th, .habit-table td {
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    color: white;
+}
+
+.habit-table th {
+    background-color: rgba(0, 255, 255, 0.3);
+    font-weight: bold;
+}
+
+.habit-table tbody tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.habit-table tbody tr:hover {
+    background-color: rgba(0, 255, 255, 0.2);
+    transition: 0.3s;
+}
+
+/* Fade-in Animation for Smooth Background Transition */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }

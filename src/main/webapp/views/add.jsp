@@ -7,9 +7,7 @@
 </head>
 
 <body>
-    <%@ include file="header.jsp" %>  <!-- Common header -->
-    <h2>Add Habit</h2>
-
+    <%@ include file="header.jsp" %>  <h2>Add Habit</h2>
 
     <form action="add" method="post">
         <label for="name">Enter the Habit Name: </label>
