@@ -3,26 +3,26 @@ package com.HabitTracker.HTracker.Controller;
 import java.time.LocalDate;
 import java.util.List;
 
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
+=======
+>>>>>>> be6b75c (Completion)
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+// import org.springframework.web.bind.annotation.RestController;
 
 import com.HabitTracker.HTracker.Repository.StoreHibernate;
 import com.HabitTracker.HTracker.model.Habit;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+// import org.springframework.web.bind.annotation.PostMapping;
+// import org.springframework.web.bind.annotation.RequestBody;
 
 
 
 @Controller
 public class HomeController {
     private final StoreHibernate sh;
-    
-
-    @Autowired
     public HomeController(StoreHibernate sh) {  
         this.sh = sh;
     }
@@ -30,9 +30,13 @@ public class HomeController {
 
     @RequestMapping("/")
     public String todayPage(@RequestParam(required = false, defaultValue = "") List<String> selectedHabits, Model m){
+<<<<<<< HEAD
         /*
+=======
+        /**
+>>>>>>> be6b75c (Completion)
          * The selectedHabits are Optional (as a first Page)
-         * But Model is to hold the consistency to next Pages. 
+         * But Model is to hold the consistency to next Pages.  It is provided by the Spring Boot 
          */
         List <Habit> habits = sh.retrieve();
         m.addAttribute("habits", habits);
@@ -40,7 +44,7 @@ public class HomeController {
         if (selectedHabits != null){
             for (String s : selectedHabits){
                 int ind = Integer.parseInt(s);
-                /*
+                /**
                  * JPA Entity can't be managed through Spring Boot as "Beans". 
                  * Manual object creation is required
                  * 
@@ -110,7 +114,4 @@ public class HomeController {
         return "display";
                 
     }
-
-
-
 }

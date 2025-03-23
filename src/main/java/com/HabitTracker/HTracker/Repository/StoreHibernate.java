@@ -21,6 +21,7 @@ public class StoreHibernate {
             cfg.configure("hibernate.cfg.xml");
 
             sessionFactory = cfg.buildSessionFactory();
+            
 
         } catch (Exception e) {
             e.printStackTrace();
