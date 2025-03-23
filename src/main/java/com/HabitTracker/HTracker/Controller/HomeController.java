@@ -3,10 +3,6 @@ package com.HabitTracker.HTracker.Controller;
 import java.time.LocalDate;
 import java.util.List;
 
-<<<<<<< HEAD
-import org.springframework.beans.factory.annotation.Autowired;
-=======
->>>>>>> be6b75c (Completion)
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,11 +26,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String todayPage(@RequestParam(required = false, defaultValue = "") List<String> selectedHabits, Model m){
-<<<<<<< HEAD
-        /*
-=======
         /**
->>>>>>> be6b75c (Completion)
          * The selectedHabits are Optional (as a first Page)
          * But Model is to hold the consistency to next Pages.  It is provided by the Spring Boot 
          */
